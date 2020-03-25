@@ -1,9 +1,0 @@
-node_modules
-/log
-/components
-/config
-/models
-/routes
-package-lock.json
-package.json
-server.js
