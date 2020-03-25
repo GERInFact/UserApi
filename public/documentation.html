@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/normalize.min.css" />
+    <link rel="stylesheet" href="css/reset.min.css" />
+    <link rel="stylesheet" href="css/documentation.css" />
+    <link rel="icon" href="img/favicon.png" />
+    <title>User API - Documentation</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header_title-container">
+        <h1 class="title-container_title">
+          User API Documentation
+        </h1>
+        <h2>
+          This API allows users to register, deregister and manage their user
+          data.
+        </h2>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Endpoints -->
+      <ul class="main-content_route-list">
+        <!-- Registration -->
+        <li class="route-list_item">
+          <div class="item_description">
+            <h3>Register</h3>
+            <p>Endpoint URL: "/users"</p>
+            <p>Authorization: none</p>
+            <p>Method: POST</p>
+            <p>Params: none</p>
+            <p>Body: JSON object</p>
+            <p>
+              Example body: { username: "", password: "", email: "",
+              registrationCode: "" }
+            </p>
+            <p>
+              Response: JSON object Status Success: 201
+            </p>
+            <img
+              src="img/register.png"
+              alt="Showing screenshot of registration request"
+            />
+          </div>
+        </li>
+        <!-- Registration End -->
+
+        <!-- Login -->
+        <li class="route-list_item">
+          <div class="item_description">
+            <h3>Login</h3>
+            <p>Endpoint URL: "/users/login"</p>
+            <p>Authorization: Basic HTTP</p>
+            <p>Method: POST</p>
+            <p>Params: none</p>
+            <p>Body: JSON</p>
+            <p>
+              Example body: {"username": "", "password":"" }
+            </p>
+            <p>
+              Response: JSON (comtains JWT) Status Success: 200
+            </p>
+            <img
+              src="img/login.png"
+              alt="Showing screenshot of login request"
+            />
+          </div>
+        </li>
+        <!-- Login End -->
+
+        <!-- User Info -->
+        <li class="route-list_item">
+          <div class="item_description">
+            <h3>User Information</h3>
+            <p>Endpoint URL: "/users/:username"</p>
+            <p>Authorization: Bearer JWT</p>
+            <p>Method: GET</p>
+            <p>Params: :username (required)</p>
+            <p>Body: none</p>
+            <p>
+              Example body: none
+            </p>
+            <p>
+              Response: JSON Status Success: 200
+            </p>
+            <img src="img/info.png" alt="Showing screenshot of info request" />
+          </div>
+        </li>
+        <!-- User Info End -->
+
+        <!-- Update -->
+        <li class="route-list_item">
+          <div class="item_description">
+            <h3>Update user</h3>
+            <p>Endpoint URL: "/users/:username"</p>
+            <p>Authorization: Bearer JWT</p>
+            <p>Method: PUT</p>
+            <p>Params: :username (required)</p>
+            <p>Body: JSON object</p>
+            <p>
+              Example body: new User(loginCredentials, contactInformation,
+              billingInformation, userGroups)
+            </p>
+            <p>
+              Response: JSON Status Success: 201
+            </p>
+            <img
+              src="img/update.png"
+              alt="Showing screenshot of update request"
+            />
+          </div>
+        </li>
+        <!-- Update End -->
+
+        <!-- Delete -->
+        <li class="route-list_item">
+          <div class="item_description">
+            <h3>Delete user</h3>
+            <p>Endpoint URL: "/users/:username"</p>
+            <p>Authorization: Bearer JWT</p>
+            <p>Method: DELETE</p>
+            <p>Params: :username (required)</p>
+            <p>Body: none</p>
+            <p>
+              Example body: none
+            </p>
+            <p>
+              Response: Text Status Success: 201
+            </p>
+            <img
+              src="img/delete.png"
+              alt="Showing screenshot of delete request"
+            />
+          </div>
+        </li>
+        <!-- Delete End -->
+
+        <!-- User Schema -->
+        <li class="route-list_item">
+          <div class="item_description">
+            <h3>User Schema</h3>
+            <h4>
+              new User(loginCredentials, contactInformation, billingInformation,
+              userGroups)
+            </h4>
+            <br />
+            <p>
+              { <br />
+              "loginCredentials": { "username" : "", "password" : "", "email" :
+              "" }
+            </p>
+            <p>
+              "contactInformation": { "name" : "", "surname" : "", <br />
+              "address" : { "street" : "", "number" : "", "zip" : "", "city" :
+              "", "county" : "", "country" : "" } <br />
+              }
+            </p>
+            <p>"billingInformation": { "bank" : "", "iban" : "" }</p>
+            <p>
+              "userGroups": string[ ] <br />
+              }
+            </p>
+            <img
+              src="img/schema.png"
+              alt="Showing screenshot of user schema request"
+            />
+          </div>
+        </li>
+        <!-- User Schema End -->
+
+        <!-- Config Schema -->
+        <li class="route-list_item">
+          <div class="item_description">
+            <h3>Config</h3>
+            <p>
+              Database password and jwt secret are collected as environment
+              variables
+            </p>
+            <p>Database password env: databasePw</p>
+            <p>JWT Secret env: user_api_secret</p>
+            <br />
+            <h3>Response JSON</h3>
+            <p>
+              { "loginCredentials": { "username": "", "password": "", "email":
+              "" }, "contactInformation": { "address": { "street": "", "number":
+              "", "zip": "", "city": "", "county": "", "country": "" }, "name":
+              "", "surname": "" }, "billingInformation": { "bank": "", "iban":
+              "" }, "userGroups": [ "", "" ], "_id": "", "joined": "", "__v": 1
+              }
+            </p>
+          </div>
+        </li>
+        <!-- Config End -->
+
+        <!-- Code Examples -->
+        <li class="route-list_item">
+          <div class="item_description">
+            <h3>JS Code</h3>
+            <h4>Register</h4>
+            <img src="img/registerCode.png" alt="Showing js fetch for registration">
+            <h4>Login</h4>
+            <img src="img/loginCode.png" alt="Showing js fetch for login">
+            <h4>Get Info</h4>
+            <img src="img/userInfoCode.png" alt="Showing js fetch for collection user data">
+          </div>
+        </li>
+        <!-- Config End -->
+
+      </ul>
+      <!-- Endpoints End -->
+    </main>
+    <!-- Main Content End -->
+  </body>
+</html>

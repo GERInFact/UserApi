@@ -1,0 +1,14 @@
+{
+    "name" : "userapi",
+    "mail": {
+        "server": "dev-mail-server",
+        "password": "test"
+    },
+    "database": {
+        "url": "mongodb://localhost/userapi",
+        "password": ""
+    },
+    "jwt" : {
+        "secret" : ""
+    }
+}
